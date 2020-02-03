@@ -1,0 +1,39 @@
+
+$switchSize : 20px;
+.toggle-btn {
+  width: 65px;
+  height: 35px;
+  border-radius: 32px;
+  position: absolute;
+  top: 4%;
+  right: 8%;
+  cursor: pointer;
+  outline: none;
+  background-color: rgba(0,0,0,.1);
+
+  &.dark{
+    background-color: #282630;
+    box-shadow: 0 2px 15px rgba(0,0,0,.15);
+  }
+
+  &__switch {
+    width: $switchSize;
+    height: $switchSize;
+    position: absolute;
+    top: calc(50% - #{$switchSize} / 2);
+    left: calc(27% - #{$switchSize} / 2);
+    border-radius: 2rem;
+    cursor: pointer;
+    transform: translateX(0);
+    box-shadow: 0 2px 15px rgba(0,0,0,.15);
+    background-color: white;
+    transition: .3s;
+  }
+
+  &__switch.dark {
+background-color: #3d3a47;
+    left: calc(73% - 25px / 2);
+
+
+  }
+}
