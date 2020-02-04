@@ -5,11 +5,12 @@ $switchSize : 20px;
   height: 35px;
   border-radius: 32px;
   position: absolute;
-  top: 4%;
-  right: 8%;
+  top: 60%;
+  right: 0;
   cursor: pointer;
   outline: none;
   background-color: rgba(0,0,0,.1);
+  transform: translate(-50%,-50%);
 
   &.dark{
     background-color: #282630;

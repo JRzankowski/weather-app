@@ -1,0 +1,129 @@
+.header {
+  height: 10vh;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+
+  .header__logo {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    position: absolute;
+    top: 60%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+
+
+    &.dark::after{
+      display: block;
+      content: '';
+      width: 15px;
+      height: 15px;
+      background-color: #26242E;
+      position: absolute;
+      border-radius: 50%;
+      top:12%;
+      right:17%;
+      opacity: 0;
+      animation: moon .1s .1s  linear both;
+
+
+      @keyframes moon {
+        100%{
+          opacity: 1;
+        }
+
+      }
+
+    }
+
+    &--water {
+      position: absolute;
+      height: 50%;
+      width: 100%;
+      background-color: rgb(159, 207, 251);
+      bottom: -15%;
+      z-index: 3;
+    }
+
+    &--water.dark {
+      background-color: #22313F;
+    }
+
+    &--island {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      transform: rotate(45deg);
+      //background-color: #82af6d;
+      bottom: 10%;
+      left: 20%;
+      z-index: 4;
+      border-radius: 10px;
+      background: linear-gradient(-45deg, rgb(181, 220, 255) 50%, #82af6d 10%);
+    }
+
+    &--island.dark {
+      background: linear-gradient(-45deg, #263949 50%, #312f39 10%);
+    }
+
+    &--sun {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      top: 23%;
+      right: 6%;
+      border-radius: 50%;
+      background: #ddd831;
+      transition: .1s ;
+      transition-timing-function: ease-out ;
+    }
+
+
+
+    &--sun.dark {
+      background: #777;
+      top:16%;
+      right: 10%;
+
+
+
+    }
+
+    &--cloud.dark {
+      position: absolute;
+      width: 35px;
+      height: 4px;
+      border-radius: 16px;
+      background-color: #383540;
+      top: 36%;
+      left: -60%;
+      animation: cloud1 .3s ease-in-out both;
+
+      @keyframes cloud1 {
+        100%{
+          left: -36%;
+          top: 36%;
+        }
+
+      }
+    }
+    &--cloud.dark:nth-last-of-type(1){
+      left: 100%;
+      top: 50%;
+      animation: cloud2 .3s ease-in-out both;
+
+
+      @keyframes cloud2 {
+        100%{
+          left: 78%;
+          top: 50%;
+        }
+
+      }
+    }
+  }
+
+}
+
