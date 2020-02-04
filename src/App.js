@@ -1,5 +1,6 @@
 import React from 'react';
 import MainPanel from './compontents/mainPanel';
+import {HashRouter, Route, Switch} from "react-router-dom";
 
 
 
@@ -7,7 +8,9 @@ import MainPanel from './compontents/mainPanel';
 function App() {
     return (
         <>
-            <MainPanel/>
+            <HashRouter>
+            <Route exact path={'/'} component={MainPanel}/>
+            </HashRouter>
         </>
     )
 

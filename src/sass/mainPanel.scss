@@ -3,17 +3,54 @@
   padding: 0;
   box-sizing: border-box;
 }
+:root{
+  font-size: calc(1vw + 1vh + .5vmin)
+}
 
 .container {
   width: 100%;
   height: 100vh;
   transition: .2s;
+
+  .footer {
+    position: absolute;
+    bottom: 1%;
+    width: 100%;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+
+    &__link {
+      text-decoration: none;
+      //color: #26242E;
+      font-size: .8rem;
+    }
+
+
+  }
+
+
 }
 
 .container.light {
   background-color: white;
+
+  .footer__link {
+    color: rgba(#26242E, .7);
+  }
 }
 
 .container.dark {
   background-color: #26242E;
+
+  .footer__link {
+    color: rgba(white,.3);
+  }
+}
+
+.light {
+  color: #26242E;
+}
+
+.dark {
+  color: white;
 }

@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import ToggleBtn from "./toggleBtn";
 import WeatherInput from "./weatherInput";
 
+
 export default class MainPanel extends Component {
     state = {
-        style: 'light'
+        style: 'light',
+        place: ''
     };
 
     setStyle = (style) => {
@@ -34,8 +36,8 @@ export default class MainPanel extends Component {
                     </div>
                     <ToggleBtn setStyle={this.setStyle}/>
                 </header>
-
-                <WeatherInput/>
+                <WeatherInput style={this.state.style}/>
+                <footer className='footer'><a className='footer__link' target='_blank' href='https://github.com/JRzankowski'>Built by Jędrzej Rzankowski</a></footer>
             </div>
         );
     }

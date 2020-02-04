@@ -10,18 +10,37 @@
   background-color: transparent;
 
 
+
   &__label{
     font-family: 'Poppins', sans-serif;
 
-    font-size: 2rem;
+    font-size: 3rem;
     width: 80%;
     text-align: center;
-    color: black;
-    mix-blend-mode: darken;
-    &--input{
 
+    &--input{
+      background-color: transparent;
+      mix-blend-mode: difference;
+      border: 2px solid #26242E;
+      padding: 6px 24px;
+      border-radius: 32px;
+      outline: none;
+      margin-top: 25px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
 
     }
+    &--input.dark{
+      border-color: white;
+    }
 
+  }
+  .check-icon{
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+    .material-icons{
+      font-size: 3rem;
+    }
   }
 }
