@@ -8,6 +8,15 @@
   flex-wrap: wrap;
   justify-content: center;
   background-color: transparent;
+  opacity: 0;
+  animation: fadeIn .6s linear both;
+
+  @keyframes fadeIn {
+    100%{
+      opacity: 1;
+    }
+
+  }
 
 
 

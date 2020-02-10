@@ -1,8 +1,17 @@
 .header {
-  height: 10vh;
+height: 10vh;
   position: relative;
   display: flex;
   justify-content: space-around;
+
+
+  .material-icons{
+    font-size: 32px;
+    top: 45%;
+    right: 108px;
+    position: absolute;
+   opacity: .2;
+  }
 
   .header__logo {
     height: 60px;

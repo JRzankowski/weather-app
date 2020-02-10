@@ -21,6 +21,12 @@ export default class MainPanel extends Component {
         });
     };
 
+    clearPlace = ()=>{
+        this.setState({
+            place: ''
+        });
+    };
+
 
     render() {
 
@@ -42,6 +48,16 @@ export default class MainPanel extends Component {
                         <div
                             className={this.state.style === 'light' ? `header__logo--cloud light` : "header__logo--cloud dark"}/>
                     </div>
+                    {isPlace ? (
+                        <i onClick={this.clearPlace} className="material-icons">
+                            clear
+                        </i>
+                    ) : (
+                        <i className="material-icons"/>
+
+                    )
+
+                    }
                     <ToggleBtn setStyle={this.setStyle}/>
 
                 </div>
