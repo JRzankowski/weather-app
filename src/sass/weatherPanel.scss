@@ -3,36 +3,119 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  height: 100%;
+
   opacity: 0;
   animation: fadeIn .6s linear both;
   font-family: 'Poppins', sans-serif;
-  font-size: 4rem;
+  font-size: 5rem;
   flex-wrap: wrap;
-  margin-top: 50px;
+
+  padding: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+  margin: 35px 20px 20px 20px;
+
 
   text-align: center;
   @keyframes fadeIn {
     100% {
       opacity: 1;
     }
-
   }
 
   &__place {
     font-size: 3rem;
     width: 100%;
   }
-  &__date{
-    font-size: 2rem;
-    opacity: .6;
-    line-height: 25px;
+
+  &__date {
+    font-size: 1.5rem;
+    opacity: .8;
+    line-height: .8;
+
   }
 
   .weather-panel__temp {
     width: 100%;
+    font-size: 4rem;
   }
-  svg{
-    width: 200px;
+
+  &__weather-info {
+    align-self: flex-start;
+    margin-top: 20px;
+    display: flex;
+
+
+
+    &--container {
+
+
+      svg {
+        width: 135px;
+        height: 150px;
+        position: relative;
+        bottom: 10px;
+      }
+
+      .weather-icon__description {
+        font-size: 1.5rem;
+        position: relative;
+        bottom: 55px;
+      }
+
+      .weather-info-box {
+        display: flex;
+        justify-content: center;
+        margin-left: 10px;
+
+        svg {
+          width: 50px;
+          height: 100%;
+          bottom: 0;
+          margin-right: 10px;
+        }
+
+        .weather-info-box__value {
+          font-size: 1.5rem;
+          line-height: 50px;
+        }
+      }
+
+      .weather-info-box__humidity,
+      {
+        svg {
+          left: -19px;
+        }
+
+        .weather-info-box__value {
+          position: relative;
+          left: -19px;
+        }
+      }
+
+      .weather-info-box__clouds {
+        svg {
+          left: -15px;
+        }
+
+        .weather-info-box__value {
+          position: relative;
+          left: -15px;
+        }
+      }
+
+    }
+    &--container:nth-of-type(1){
+      svg{
+        margin-top: 20px;
+      }
+      .weather-icon__description{
+        margin-top: 5px;
+      }
+    }
+
   }
+
 }
+
+

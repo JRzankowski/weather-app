@@ -14,7 +14,7 @@ handleClick=()=> {
 
 };
     handleInput = (e) => {
-        const regex = /[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ-]/;
+        const regex = /[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ_-]/;
         const chars = e.target.value.split('');
         const char = chars.pop();
         if (!regex.test(char)) {

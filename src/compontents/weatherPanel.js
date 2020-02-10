@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {WiAlien, WiDaySunny} from 'weather-icons-react'
+import {WiAlien, WiCloudy, WiDaySunny, WiHumidity, WiStrongWind, WiThermometer} from 'weather-icons-react'
 import ReactCountryFlag from "react-country-flag"
 import WeatherIcon from "./weatherIcon";
 
@@ -37,27 +37,27 @@ export default class WeatherPanel extends Component {
                     let i = 0;
 
                     this.setState(() => ({
-                        isLoaded: true,
-                        // list-main
-                        temp: result.list[i].main.temp,
-                        pressure: result.list[i].main.pressure,
-                        humidity: result.list[i].main.humidity,
-                        //list-weather
-                        id: result.list[i].weather[0].id,
-                        weatherName: result.list[i].weather[0].main,
-                        weatherDescription: result.list[i].weather[0].description,
-                        weatherIcon: result.list[i].weather[0].icon,
-                        //list clouds
-                        clouds: result.list[i].clouds.all,
-                        //list-wind
-                        wind: result.list[i].wind.speed,
-                        //dt_txt
-                        date: result.list[i].dt_txt,
-                        //city
-                        cityFullName: result.city.name,
-                        country: result.city.country
-                    }), () => {
-                    });
+                            isLoaded: true,
+                            // list-main
+                            temp: result.list[i].main.temp,
+                            pressure: result.list[i].main.pressure,
+                            humidity: result.list[i].main.humidity,
+                            //list-weather
+                            id: result.list[i].weather[0].id,
+                            weatherName: result.list[i].weather[0].main,
+                            weatherDescription: result.list[i].weather[0].description,
+                            weatherIcon: result.list[i].weather[0].icon,
+                            //list clouds
+                            clouds: result.list[i].clouds.all,
+                            //list-wind
+                            wind: result.list[i].wind.speed,
+                            //dt_txt
+                            date: result.list[i].dt_txt,
+                            //city
+                            cityFullName: result.city.name,
+                            country: result.city.country
+                        })
+                    );
                     console.log(result);
 
                 })
@@ -73,6 +73,7 @@ export default class WeatherPanel extends Component {
 
     render() {
         const {style} = this.props;
+
         const {
             error, isLoaded, items,
             city,
@@ -104,14 +105,42 @@ export default class WeatherPanel extends Component {
 
                 ) : (
                     <>
+                        <div className="weather-panel__date">{date.replace(/-/g, '/').slice(0, 10)}</div>
                         <div className='weather-panel__place'>
                             <p className='weather-panel__place--place-info'>{cityFullName}, {country} </p>
                         </div>
-                        <div className="weather-panel__date">{date.replace(/-/g, '/').slice(0, 10)}</div>
                         <div className='weather-panel__temp'>
                             {Math.round(temp - 273.15)}°C
                         </div>
-                        <WeatherIcon id={id} style={style}/>
+                        <div className="weather-panel__weather-info">
+                            <div className="weather-panel__weather-info--container">
+                                <WeatherIcon id={id} style={style}/>
+                                <p className='weather-icon__description'>{weatherDescription}</p>
+                            </div>
+                            <div className="weather-panel__weather-info--container">
+                                <div className="weather-info-box weather-info-box__wind">
+                                    <WiStrongWind/>
+                                    <p className='weather-info-box__value'>{wind} km/h</p>
+
+                                </div>
+                                <div className="weather-info-box weather-info-box__pressure">
+                                    <WiThermometer/>
+                                    <p className='weather-info-box__value'>{pressure} hPa</p>
+
+                                </div>
+                                <div className="weather-info-box weather-info-box__humidity">
+                                    <WiHumidity/>
+                                    <p className='weather-info-box__value'>{humidity} %</p>
+
+                                </div>
+                                <div className="weather-info-box weather-info-box__clouds">
+                                    <WiCloudy/>
+                                    <p className='weather-info-box__value'>{clouds} %</p>
+
+                                </div>
+
+                            </div>
+                        </div>
 
 
                     </>
