@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {WiDaySunny} from 'weather-icons-react'
+import {WiAlien, WiDaySunny} from 'weather-icons-react'
 import ReactCountryFlag from "react-country-flag"
+import WeatherIcon from "./weatherIcon";
 
 export default class WeatherPanel extends Component {
     state = {
@@ -34,7 +35,8 @@ export default class WeatherPanel extends Component {
             .then(
                 (result) => {
                     let i = 0;
-                    this.setState({
+
+                    this.setState(() => ({
                         isLoaded: true,
                         // list-main
                         temp: result.list[i].main.temp,
@@ -54,9 +56,9 @@ export default class WeatherPanel extends Component {
                         //city
                         cityFullName: result.city.name,
                         country: result.city.country
-
+                    }), () => {
                     });
-                    console.log(result.status);
+                    console.log(result);
 
                 })
 
@@ -70,6 +72,7 @@ export default class WeatherPanel extends Component {
     }
 
     render() {
+        const {style} = this.props;
         const {
             error, isLoaded, items,
             city,
@@ -92,6 +95,7 @@ export default class WeatherPanel extends Component {
             country,
         } = this.state;
 
+
         return (
             <div className='weather-panel'>
                 {error ? (
@@ -103,10 +107,13 @@ export default class WeatherPanel extends Component {
                         <div className='weather-panel__place'>
                             <p className='weather-panel__place--place-info'>{cityFullName}, {country} </p>
                         </div>
-                        <div className="weather-panel__date">{date.replace(/-/g,'/').slice(0,10)}</div>
+                        <div className="weather-panel__date">{date.replace(/-/g, '/').slice(0, 10)}</div>
                         <div className='weather-panel__temp'>
                             {Math.round(temp - 273.15)}°C
                         </div>
+                        <WeatherIcon id={id} style={style}/>
+
+
                     </>
 
 

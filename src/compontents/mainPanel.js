@@ -64,7 +64,7 @@ export default class MainPanel extends Component {
                 {!isPlace ? (
                     <WeatherInput style={this.state.style} setPlace={this.setPlace}/>
                 ) : (
-                    <WeatherPanel place={this.state.place}/>
+                    <WeatherPanel place={this.state.place} style={this.state.style}/>
                 )}
 
 
