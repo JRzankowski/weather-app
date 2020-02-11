@@ -5,6 +5,9 @@ import WeatherIcon from "./weatherIcon";
 
 export default class WeatherPanel extends Component {
     state = {
+        //slide
+
+
         error: null,
         isLoaded: false,
         city: this.props.place,
@@ -34,25 +37,25 @@ export default class WeatherPanel extends Component {
             .then(res => res.json())
             .then(
                 (result) => {
-                    let i = 0;
+
 
                     this.setState(() => ({
                             isLoaded: true,
                             // list-main
-                            temp: result.list[i].main.temp,
-                            pressure: result.list[i].main.pressure,
-                            humidity: result.list[i].main.humidity,
+                            temp: result.list[this.props.slide].main.temp,
+                            pressure: result.list[this.props.slide].main.pressure,
+                            humidity: result.list[this.props.slide].main.humidity,
                             //list-weather
-                            id: result.list[i].weather[0].id,
-                            weatherName: result.list[i].weather[0].main,
-                            weatherDescription: result.list[i].weather[0].description,
-                            weatherIcon: result.list[i].weather[0].icon,
+                            id: result.list[this.props.slide].weather[0].id,
+                            weatherName: result.list[this.props.slide].weather[0].main,
+                            weatherDescription: result.list[this.props.slide].weather[0].description,
+                            weatherIcon: result.list[this.props.slide].weather[0].icon,
                             //list clouds
-                            clouds: result.list[i].clouds.all,
+                            clouds: result.list[this.props.slide].clouds.all,
                             //list-wind
-                            wind: result.list[i].wind.speed,
+                            wind: result.list[this.props.slide].wind.speed,
                             //dt_txt
-                            date: result.list[i].dt_txt,
+                            date: result.list[this.props.slide].dt_txt,
                             //city
                             cityFullName: result.city.name,
                             country: result.city.country
@@ -105,7 +108,7 @@ export default class WeatherPanel extends Component {
 
                 ) : (
                     <>
-                        <div className="weather-panel__date">{date.replace(/-/g, '/').slice(0, 10)}</div>
+                        <div className="weather-panel__date">{date}</div>
                         <div className='weather-panel__place'>
                             <p className='weather-panel__place--place-info'>{cityFullName}, {country} </p>
                         </div>

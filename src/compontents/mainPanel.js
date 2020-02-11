@@ -3,6 +3,9 @@ import ToggleBtn from "./toggleBtn";
 import WeatherInput from "./weatherInput";
 import WeatherPanel from "./weatherPanel";
 
+import {CarouselProvider, Slider, Slide, ButtonBack, ButtonNext} from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+
 
 export default class MainPanel extends Component {
     state = {
@@ -21,7 +24,7 @@ export default class MainPanel extends Component {
         });
     };
 
-    clearPlace = ()=>{
+    clearPlace = () => {
         this.setState({
             place: ''
         });
@@ -64,7 +67,36 @@ export default class MainPanel extends Component {
                 {!isPlace ? (
                     <WeatherInput style={this.state.style} setPlace={this.setPlace}/>
                 ) : (
-                    <WeatherPanel place={this.state.place} style={this.state.style}/>
+                    <CarouselProvider naturalSlideWidth={100}
+                                      naturalSlideHeight={150} totalSlides={5}>
+                        <Slider>
+                            <Slide index={0}>
+                                <WeatherPanel place={this.state.place} style={this.state.style} slide={0}/>
+                            </Slide>
+                            <Slide index={1}>
+                                <WeatherPanel place={this.state.place} style={this.state.style} slide={1}/>
+                            </Slide>
+                            <Slide index={3}>
+                                <WeatherPanel place={this.state.place} style={this.state.style} slide={2}/>
+                            </Slide>
+                            <Slide index={4}>
+                                <WeatherPanel place={this.state.place} style={this.state.style} slide={3}/>
+                            </Slide>
+                            <Slide index={5}>
+                                <WeatherPanel place={this.state.place} style={this.state.style} slide={4}/>
+                            </Slide>
+                        </Slider>
+                        <div className="buttons">
+                            <ButtonBack className='button buttonBack'><i className="material-icons">
+                                keyboard_arrow_left
+                            </i></ButtonBack>
+                            <ButtonNext className='button buttonNext'><i className="material-icons">
+                                keyboard_arrow_right
+                            </i></ButtonNext>
+                        </div>
+
+                    </CarouselProvider>
+
                 )}
 
 

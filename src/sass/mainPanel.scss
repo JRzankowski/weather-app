@@ -3,8 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-:root{
-  font-size: calc(1vw + 1vh + .5vmin)
+
+:root {
+  font-size: calc(1vw + 1vh + .5vmin);
+  height: 100vh;
 }
 
 .container {
@@ -43,14 +45,46 @@
   background-color: #26242E;
 
   .footer__link {
-    color: rgba(white,.3);
+    color: rgba(white, .3);
   }
 }
 
 .light {
   color: #26242E;
+
 }
 
 .dark {
   color: white;
+
+
 }
+
+.buttons {
+
+  position: fixed;
+  bottom: 2vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+
+  .button {
+    background-color: transparent;
+    border: none;
+
+    .material-icons {
+      font-size: 40px;
+      mix-blend-mode: difference;
+    }
+
+  }
+
+
+}
+
+//.button:nth-of-type(1){
+//  transform: translateX(-45%);
+//}
+//.button:nth-of-type(2){
+//  transform: translateX(-35%);
+//}
