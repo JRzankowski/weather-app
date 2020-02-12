@@ -122,7 +122,7 @@ export default class WeatherIcon extends Component {
                 }
             }
             // cloudy
-            if (iconId === 801) {
+            if (iconId === 802) {
                 if (style === 'light') {
                     return <WiDayCloudy/>
                 }

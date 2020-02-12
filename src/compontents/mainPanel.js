@@ -3,14 +3,16 @@ import ToggleBtn from "./toggleBtn";
 import WeatherInput from "./weatherInput";
 import WeatherPanel from "./weatherPanel";
 
-import {CarouselProvider, Slider, Slide, ButtonBack, ButtonNext} from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
+
+import AliceCarousel from 'react-alice-carousel'
+import "react-alice-carousel/lib/alice-carousel.css";
 
 
 export default class MainPanel extends Component {
     state = {
         style: 'light',
-        place: ''
+        place: '',
+        currentIndex: 0,
     };
 
     setStyle = (style) => {
@@ -31,8 +33,15 @@ export default class MainPanel extends Component {
     };
 
 
-    render() {
 
+    render() {
+        // const getWeather = ()=>{
+        //     for(let i =0;i<=40;i++){
+        //
+        //     }
+        // };
+
+        const {currentIndex} = this.state
         const isPlace = this.state.place;
 
         let containerStyle = `container ${this.state.style}`;
@@ -57,9 +66,7 @@ export default class MainPanel extends Component {
                         </i>
                     ) : (
                         <i className="material-icons"/>
-
                     )
-
                     }
                     <ToggleBtn setStyle={this.setStyle}/>
 
@@ -67,36 +74,64 @@ export default class MainPanel extends Component {
                 {!isPlace ? (
                     <WeatherInput style={this.state.style} setPlace={this.setPlace}/>
                 ) : (
-                    <CarouselProvider naturalSlideWidth={100}
-                                      naturalSlideHeight={150} totalSlides={5}>
-                        <Slider>
-                            <Slide index={0}>
-                                <WeatherPanel place={this.state.place} style={this.state.style} slide={0}/>
-                            </Slide>
-                            <Slide index={1}>
-                                <WeatherPanel place={this.state.place} style={this.state.style} slide={1}/>
-                            </Slide>
-                            <Slide index={3}>
-                                <WeatherPanel place={this.state.place} style={this.state.style} slide={2}/>
-                            </Slide>
-                            <Slide index={4}>
-                                <WeatherPanel place={this.state.place} style={this.state.style} slide={3}/>
-                            </Slide>
-                            <Slide index={5}>
-                                <WeatherPanel place={this.state.place} style={this.state.style} slide={4}/>
-                            </Slide>
-                        </Slider>
-                        <div className="buttons">
-                            <ButtonBack className='button buttonBack'><i className="material-icons">
-                                keyboard_arrow_left
-                            </i></ButtonBack>
-                            <ButtonNext className='button buttonNext'><i className="material-icons">
-                                keyboard_arrow_right
-                            </i></ButtonNext>
-                        </div>
+                    <>
+                        <AliceCarousel
+                            responsive={this.responsive}
+                            fadeOutAnimation={true}
+                            mouseTrackingEnabled={true}
+                            dotsDisabled={true}
+                            infinite={false}
+                            slideToIndex={currentIndex}
 
-                    </CarouselProvider>
+                         >
+                            {<WeatherPanel place={this.state.place} style={this.state.style} slide={0}/> === null ?
+                                null : <WeatherPanel place={this.state.place} style={this.state.style} slide={0}
+                                                     onDragStart={this.handleOnDragStart}/>}
+                            {<WeatherPanel place={this.state.place} style={this.state.style}
+                                           slide={1}/> === null ? null :
+                                <WeatherPanel place={this.state.place} style={this.state.style} slide={1}
+                                              onDragStart={this.handleOnDragStart}/>}
+                            {<WeatherPanel place={this.state.place} style={this.state.style}
+                                           slide={2}/> === null ? null :
+                                <WeatherPanel place={this.state.place} style={this.state.style} slide={2}
+                                              onDragStart={this.handleOnDragStart}/>}
+                            {<WeatherPanel place={this.state.place} style={this.state.style}
+                                           slide={3}/> === null ? null :
+                                <WeatherPanel place={this.state.place} style={this.state.style} slide={3}
+                                              onDragStart={this.handleOnDragStart}/>}
+                            {<WeatherPanel place={this.state.place} style={this.state.style}
+                                           slide={4}/> === null ? null :
+                                <WeatherPanel place={this.state.place} style={this.state.style} slide={4}
+                                              onDragStart={this.handleOnDragStart}/>}
+                            {<WeatherPanel place={this.state.place} style={this.state.style}
+                                           slide={5}/> === null ? null :
+                                <WeatherPanel place={this.state.place} style={this.state.style} slide={5}
+                                              onDragStart={this.handleOnDragStart}/>}
+                            {<WeatherPanel place={this.state.place} style={this.state.style}
+                                           slide={6}/> === null ? null :
+                                <WeatherPanel place={this.state.place} style={this.state.style} slide={6}
+                                              onDragStart={this.handleOnDragStart}/>}
+                            {<WeatherPanel place={this.state.place} style={this.state.style}
+                                           slide={7}/> === null ? null :
+                                <WeatherPanel place={this.state.place} style={this.state.style} slide={7}
+                                              onDragStart={this.handleOnDragStart}/>}
+                            {<WeatherPanel place={this.state.place} style={this.state.style}
+                                           slide={8}/> === null ? null :
+                                <WeatherPanel place={this.state.place} style={this.state.style} slide={8}
+                                              onDragStart={this.handleOnDragStart}/>}
+                            {<WeatherPanel place={this.state.place} style={this.state.style}
+                                           slide={9}/> === null ? null :
+                                <WeatherPanel place={this.state.place} style={this.state.style} slide={9}
+                                              onDragStart={this.handleOnDragStart}/>}
+                            {<WeatherPanel place={this.state.place} style={this.state.style}
+                                           slide={10}/> === null ? null :
+                                <WeatherPanel place={this.state.place} style={this.state.style} slide={10}
+                                              onDragStart={this.handleOnDragStart}/>}
+                        </AliceCarousel>
 
+
+
+                    </>
                 )}
 
 

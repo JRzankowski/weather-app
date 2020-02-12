@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {WiAlien, WiCloudy, WiDaySunny, WiHumidity, WiStrongWind, WiThermometer} from 'weather-icons-react'
-import ReactCountryFlag from "react-country-flag"
 import WeatherIcon from "./weatherIcon";
 
 export default class WeatherPanel extends Component {
@@ -38,30 +37,31 @@ export default class WeatherPanel extends Component {
             .then(
                 (result) => {
 
+                    if (result.list[this.props.slide].main.temp) {
+                        this.setState(() => ({
+                                isLoaded: true,
+                                // list-main
+                                temp: result.list[this.props.slide].main.temp,
+                                pressure: result.list[this.props.slide].main.pressure,
+                                humidity: result.list[this.props.slide].main.humidity,
+                                //list-weather
+                                id: result.list[this.props.slide].weather[0].id,
+                                weatherName: result.list[this.props.slide].weather[0].main,
+                                weatherDescription: result.list[this.props.slide].weather[0].description,
+                                weatherIcon: result.list[this.props.slide].weather[0].icon,
+                                //list clouds
+                                clouds: result.list[this.props.slide].clouds.all,
+                                //list-wind
+                                wind: result.list[this.props.slide].wind.speed,
+                                //dt_txt
+                                date: result.list[this.props.slide].dt_txt,
+                                //city
+                                cityFullName: result.city.name,
+                                country: result.city.country
+                            })
+                        );
+                    }
 
-                    this.setState(() => ({
-                            isLoaded: true,
-                            // list-main
-                            temp: result.list[this.props.slide].main.temp,
-                            pressure: result.list[this.props.slide].main.pressure,
-                            humidity: result.list[this.props.slide].main.humidity,
-                            //list-weather
-                            id: result.list[this.props.slide].weather[0].id,
-                            weatherName: result.list[this.props.slide].weather[0].main,
-                            weatherDescription: result.list[this.props.slide].weather[0].description,
-                            weatherIcon: result.list[this.props.slide].weather[0].icon,
-                            //list clouds
-                            clouds: result.list[this.props.slide].clouds.all,
-                            //list-wind
-                            wind: result.list[this.props.slide].wind.speed,
-                            //dt_txt
-                            date: result.list[this.props.slide].dt_txt,
-                            //city
-                            cityFullName: result.city.name,
-                            country: result.city.country
-                        })
-                    );
-                    console.log(result);
 
                 })
 
@@ -103,7 +103,7 @@ export default class WeatherPanel extends Component {
         return (
             <div className='weather-panel'>
                 {error ? (
-                    <p>Something went wrong</p>
+                    <p className='error'>Something went wrong...</p>
 
 
                 ) : (

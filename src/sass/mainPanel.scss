@@ -52,17 +52,41 @@
 .light {
   color: #26242E;
 
+  .material-icons {
+    color: inherit;
+    filter: invert(1%);
+  }
 }
 
 .dark {
   color: white;
 
+  .buttons {
+
+    position: fixed;
+    bottom: 2vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    .button {
+      background-color: transparent;
+      border: none;
+
+      .material-icons {
+        color: inherit;
+        filter: invert(100%);
+
+      }
+    }
+  }
+
 
 }
 
-.buttons {
+.alice-carousel__prev-btn,
+.alice-carousel__next-btn{
 
-  position: fixed;
   bottom: 2vh;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -74,7 +98,7 @@
 
     .material-icons {
       font-size: 40px;
-      mix-blend-mode: difference;
+
     }
 
   }
