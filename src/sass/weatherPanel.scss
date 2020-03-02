@@ -1,63 +1,65 @@
+
 .weather-panel {
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   opacity: 0;
   animation: fadeIn .6s linear both;
   font-family: 'Poppins', sans-serif;
-  font-size: 5rem;
   flex-wrap: wrap;
-  padding: 10px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-  margin: 35px 20px;
-  height: 70vh;
+  margin: 20px 20px 0;
   text-align: center;
+  position: relative;
+  padding: 25px 0 0;
+
   @keyframes fadeIn {
     100% {
       opacity: 1;
     }
   }
-  .error{
+
+  .error {
     font-size: 2rem;
   }
+
   &__place {
-    font-size: 3rem;
+    font-size: 2.5rem;
     width: 100%;
-    @media (max-width: 351px) {
-      font-size: 2rem;
+    @media (min-width: 450px) {
+      font-size: 3rem;
     }
   }
 
   &__date {
-    font-size: 1.5rem;
+    font-size: 1rem;
     opacity: .8;
     line-height: .8;
-    @media (max-width: 351px) {
-      font-size: 1rem;
+    @media (min-width: 450px) {
+      font-size: 1.2rem;
+      line-height: 1;
     }
-
   }
 
   .weather-panel__temp {
     width: 100%;
-    font-size: 4rem;
-    @media (max-width: 351px) {
-      font-size: 3.5rem;
+    font-size: 2.8rem;
+    @media (min-width: 450px) {
+      font-size: 3rem;
+      line-height: 1;
     }
   }
 
   &__weather-info {
-    align-self: flex-start;
-    margin-top: 20px;
     display: flex;
-    margin: 0 auto;
-
+    margin: 30px auto 0;
+    @media (min-width: 450px) {
+      display: block;
+    }
 
     &--container {
-
-
       svg {
         width: 135px;
         height: 150px;
@@ -67,33 +69,50 @@
           width: 110px;
           height: 130px;
         }
+        @media (min-width: 450px) {
+          bottom: 45px;
+          height: 150px;
+          width: 100%;
+        }
       }
 
       .weather-icon__description {
-        font-size: 1.3rem;
+        font-size: 1rem;
         position: relative;
-        bottom: 60px;
-        @media (max-width: 351px) {
-          font-size: 1.1rem;
+        bottom: 40px;
+        @media (min-width: 450px) {
+          bottom: 75px;
+          font-size: 1.2rem;
         }
-
       }
 
       .weather-info-box {
         display: flex;
         justify-content: center;
         margin-left: 10px;
+        @media (min-width: 450px) {
+          position: relative;
+          bottom: 50px;
+        }
+        position: relative;
 
         svg {
           width: 50px;
           height: 100%;
           bottom: 0;
           margin-right: 10px;
+          @media (min-width: 450px) {
+            width: 80px;
+            bottom: 20px;
+          }
         }
 
         .weather-info-box__value {
-          font-size: 1.5rem;
+          font-size: 1.2rem;
           line-height: 50px;
+          @media (min-width: 450px) {
+            font-size: 1.5rem;
+          }
         }
       }
 
@@ -119,7 +138,6 @@
           left: -15px;
         }
       }
-
     }
 
     &--container:nth-of-type(1) {
@@ -131,10 +149,58 @@
         margin-top: 15px;
       }
     }
+  }
+}
 
+.weather__panel-container {
+  display: flex;
+
+  .weather-panel:nth-of-type(1) {
+    display: flex;
+    width: 100%;
   }
 
+  .weather-panel:nth-of-type(2),
+  .weather-panel:nth-of-type(3),
+  .weather-panel:nth-of-type(4) {
+    display: none
+  }
+
+  @media(min-width: 750px) {
+    .weather-panel:nth-of-type(1),
+    .weather-panel:nth-of-type(2) {
+      display: flex;
+      width: 50%;
+    }
+    .weather-panel:nth-of-type(3),
+    .weather-panel:nth-of-type(4) {
+      display: none
+    }
+
+  }
+  @media(min-width: 1024px) {
+    .weather-panel:nth-of-type(1),
+    .weather-panel:nth-of-type(2),
+    .weather-panel:nth-of-type(3) {
+      display: flex;
+      width: 50%;
+    }
+    .weather-panel:nth-of-type(4) {
+      display: none
+    }
+  }
+  @media(min-width: 1350px) {
+    .weather-panel:nth-of-type(1),
+    .weather-panel:nth-of-type(2),
+    .weather-panel:nth-of-type(3),
+    .weather-panel:nth-of-type(4) {
+      display: flex;
+      width: 50%;
+    }
+  }
 }
+
+
 
 
 

@@ -1,22 +1,16 @@
 import React from 'react';
 import MainPanel from './compontents/mainPanel';
-import {HashRouter, Route, Switch} from "react-router-dom";
-import WeatherPanel from "./compontents/weatherPanel";
-
-
+import {HashRouter, Route} from "react-router-dom";
 
 
 function App() {
     return (
         <>
             <HashRouter>
-            <Route exact path={'/'} component={MainPanel}/>
-            <Route path={'/weather'} component={WeatherPanel}/>
+                <Route exact path={'/'} component={MainPanel}/>
             </HashRouter>
         </>
     )
-
-
 }
 
 export default App;

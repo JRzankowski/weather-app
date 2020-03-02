@@ -1,18 +1,19 @@
 import React, {Component} from 'react';
 
-
-
 export default class WeatherInput extends Component {
     state = {
+
         place: ''
     };
-handleClick=()=> {
-    let place = this.state.place;
-    if (typeof this.props.setPlace === 'function') {
-        this.props.setPlace(place);
-    }
-
-};
+    handleClick = () => {
+        let place = this.state.place;
+        if (typeof this.props.setPlace === 'function') {
+            this.props.setPlace(place);
+        }
+        if (this.state.place !== "") {
+            document.querySelector('.header').classList.remove('desktop');
+        }
+    };
     handleInput = (e) => {
         const regex = /[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ_-]/;
         const chars = e.target.value.split('');
@@ -24,11 +25,9 @@ handleClick=()=> {
         this.setState((state) => ({
             place: place
         }))
-
     };
 
     render() {
-
         return (
             <div className='main-input'>
                 <label
@@ -39,11 +38,9 @@ handleClick=()=> {
                        type='text'
                        onInput={this.handleInput}/>
                 <div onClick={this.handleClick} className="check-icon">
-                            <i className="material-icons">
-                                arrow_forward
-                            </i>
-
-
+                    <i className="material-icons">
+                        arrow_forward
+                    </i>
                 </div>
             </div>
         );

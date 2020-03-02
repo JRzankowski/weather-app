@@ -1,5 +1,4 @@
-
-$switchSize : 20px;
+$switchSize: 20px;
 .toggle-btn {
   width: 65px;
   height: 35px;
@@ -9,12 +8,12 @@ $switchSize : 20px;
   right: 0;
   cursor: pointer;
   outline: none;
-  background-color: rgba(0,0,0,.1);
-  transform: translate(-50%,-50%);
+  background-color: rgba(0, 0, 0, .1);
+  transform: translate(-50%, -50%);
 
-  &.dark{
+  &.dark {
     background-color: #282630;
-    box-shadow: 0 2px 15px rgba(0,0,0,.15);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, .15);
   }
 
   &__switch {
@@ -26,15 +25,13 @@ $switchSize : 20px;
     border-radius: 2rem;
     cursor: pointer;
     transform: translateX(0);
-    box-shadow: 0 2px 15px rgba(0,0,0,.15);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, .15);
     background-color: white;
     transition: .3s;
   }
 
   &__switch.dark {
-background-color: #3d3a47;
+    background-color: #3d3a47;
     left: calc(73% - 25px / 2);
-
-
   }
 }

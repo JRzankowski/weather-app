@@ -11,20 +11,11 @@ import {
     WiDaySunnyOvercast, WiNightAltPartlyCloudy,
     WiNightAltCloudy, WiDayCloudy,
     WiNightAltCloudyHigh, WiDayCloudyHigh, WiAlien
-
-
 } from 'weather-icons-react'
 
-
 export default class WeatherIcon extends Component {
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        let iconId = this.props.id;
-
-    }
-
     render() {
-        const {id, style} = this.props;
+        const {style} = this.props;
         let iconId = this.props.id;
         // const {iconId} = this.state.iconId;
         if (typeof iconId === 'number') {
@@ -37,7 +28,6 @@ export default class WeatherIcon extends Component {
                 if (style === 'dark') {
                     return <WiNightAltStormShowers/>
                 }
-
             }
             //normal
             if (iconId >= 210 && iconId <= 221) {
@@ -47,9 +37,7 @@ export default class WeatherIcon extends Component {
                 if (style === 'dark') {
                     return <WiNightAltLightning/>
                 }
-
             }
-            //----------
             //Drizzle
             if (iconId >= 300 && iconId <= 321) {
                 if (style === 'light') {
@@ -58,7 +46,6 @@ export default class WeatherIcon extends Component {
                 if (style === 'dark') {
                     return <WiNightAltShowers/>
                 }
-
             }
             //Rain
             if (iconId >= 500 && iconId <= 531) {
@@ -68,9 +55,8 @@ export default class WeatherIcon extends Component {
                 if (style === 'dark') {
                     return <WiNightAltRain/>
                 }
-
             }
-//Snow
+            //Snow
             if (iconId >= 600 && iconId <= 602) {
                 if (style === 'light') {
                     return <WiDaySnowWind/>
@@ -78,10 +64,8 @@ export default class WeatherIcon extends Component {
                 if (style === 'dark') {
                     return <WiNightAltSnowWind/>
                 }
-
             }
-
-//Snow with rain
+            //Snow with rain
             if (iconId >= 611 && iconId <= 622) {
                 if (style === 'light') {
                     return <WiDaySleet/>
@@ -89,9 +73,8 @@ export default class WeatherIcon extends Component {
                 if (style === 'dark') {
                     return <WiNightAltSleet/>
                 }
-
             }
-//Fog
+            //Fog
             if (iconId >= 611 && iconId <= 622) {
                 if (style === 'light') {
                     return <WiDayFog/>
@@ -99,9 +82,8 @@ export default class WeatherIcon extends Component {
                 if (style === 'dark') {
                     return <WiNightFog/>
                 }
-
             }
-//clear sky
+            //clear sky
             if (iconId === 800) {
                 if (style === 'light') {
                     return <WiDaySunny/>
@@ -109,7 +91,6 @@ export default class WeatherIcon extends Component {
                 if (style === 'dark') {
                     return <WiNightClear/>
                 }
-
             }
             //Clouds
             //few clouds
@@ -139,10 +120,8 @@ export default class WeatherIcon extends Component {
                     return <WiNightAltCloudyHigh/>
                 }
             }
-
         } else {
             return <WiAlien/>
-
         }
     }
 }

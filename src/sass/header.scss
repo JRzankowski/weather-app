@@ -1,16 +1,17 @@
 .header {
-height: 10vh;
   position: relative;
   display: flex;
-  justify-content: space-around;
+  height: 70px;
+  margin: 0 auto;
+  width: 100vw;
 
-
-  .material-icons{
+  .material-icons {
     font-size: 32px;
     top: 45%;
     right: 108px;
     position: absolute;
-   opacity: .2;
+    opacity: .2;
+    cursor: pointer;
   }
 
   .header__logo {
@@ -19,12 +20,12 @@ height: 10vh;
     border-radius: 50%;
     position: absolute;
     top: 60%;
-    left: 15%;
+    left: 60px;
     transform: translate(-50%, -50%);
     overflow: hidden;
+    transition: .3s;
 
-
-    &.dark::after{
+    &.dark::after {
       display: block;
       content: '';
       width: 15px;
@@ -32,14 +33,13 @@ height: 10vh;
       background-color: #26242E;
       position: absolute;
       border-radius: 50%;
-      top:12%;
-      right:17%;
+      top: 12%;
+      right: 17%;
       opacity: 0;
-      animation: moon .1s .1s  linear both;
-
+      animation: moon .1s .1s linear both;
 
       @keyframes moon {
-        100%{
+        100% {
           opacity: 1;
         }
 
@@ -85,17 +85,15 @@ height: 10vh;
       right: 6%;
       border-radius: 50%;
       background: #ddd831;
-      transition: .1s ;
-      transition-timing-function: ease-out ;
+      transition: .1s;
+      transition-timing-function: ease-out;
     }
-
 
 
     &--sun.dark {
       background: #777;
-      top:16%;
+      top: 16%;
       right: 10%;
-
 
 
     }
@@ -111,27 +109,38 @@ height: 10vh;
       animation: cloud1 .3s ease-in-out both;
 
       @keyframes cloud1 {
-        100%{
+        100% {
           left: -36%;
           top: 36%;
         }
 
       }
     }
-    &--cloud.dark:nth-last-of-type(1){
+
+    &--cloud.dark:nth-last-of-type(1) {
       left: 100%;
       top: 50%;
       animation: cloud2 .3s ease-in-out both;
 
 
       @keyframes cloud2 {
-        100%{
+        100% {
           left: 78%;
           top: 50%;
         }
 
       }
     }
+  }
+}
+
+.header.desktop {
+  margin-bottom: 350px;
+
+  .header__logo {
+    transform: scale(6) translateX(-50%);
+    top: 200px;
+    left: calc(50% + 150px);
   }
 
 }

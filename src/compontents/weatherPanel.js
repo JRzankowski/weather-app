@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-import {WiAlien, WiCloudy, WiDaySunny, WiHumidity, WiStrongWind, WiThermometer} from 'weather-icons-react'
+import {WiCloudy, WiHumidity, WiStrongWind, WiThermometer} from 'weather-icons-react'
 import WeatherIcon from "./weatherIcon";
 
 export default class WeatherPanel extends Component {
     state = {
         //slide
-
-
         error: null,
         isLoaded: false,
         city: this.props.place,
@@ -28,66 +26,62 @@ export default class WeatherPanel extends Component {
         date: '',
         //city
         cityFullName: '',
-        country: ''
+        country: '',
+        //slide
+        slide: 0
     };
 
     componentDidMount() {
-        fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${this.state.city},&appid=726dd2967dfc533b5e31a92ffb2fe5aa`)
-            .then(res => res.json())
-            .then(
-                (result) => {
-
-                    if (result.list[this.props.slide].main.temp) {
-                        this.setState(() => ({
-                                isLoaded: true,
-                                // list-main
-                                temp: result.list[this.props.slide].main.temp,
-                                pressure: result.list[this.props.slide].main.pressure,
-                                humidity: result.list[this.props.slide].main.humidity,
-                                //list-weather
-                                id: result.list[this.props.slide].weather[0].id,
-                                weatherName: result.list[this.props.slide].weather[0].main,
-                                weatherDescription: result.list[this.props.slide].weather[0].description,
-                                weatherIcon: result.list[this.props.slide].weather[0].icon,
-                                //list clouds
-                                clouds: result.list[this.props.slide].clouds.all,
-                                //list-wind
-                                wind: result.list[this.props.slide].wind.speed,
-                                //dt_txt
-                                date: result.list[this.props.slide].dt_txt,
-                                //city
-                                cityFullName: result.city.name,
-                                country: result.city.country
-                            })
-                        );
+        if (!this.state.isLoaded) {
+            fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${this.state.city},&appid=726dd2967dfc533b5e31a92ffb2fe5aa`)
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        if (result.list[this.props.slide].main.temp) {
+                            this.setState(() => ({
+                                    isLoaded: true,
+                                    // list-main
+                                    temp: result.list[this.props.slide].main.temp,
+                                    pressure: result.list[this.props.slide].main.pressure,
+                                    humidity: result.list[this.props.slide].main.humidity,
+                                    //list-weather
+                                    id: result.list[this.props.slide].weather[0].id,
+                                    weatherName: result.list[this.props.slide].weather[0].main,
+                                    weatherDescription: result.list[this.props.slide].weather[0].description,
+                                    weatherIcon: result.list[this.props.slide].weather[0].icon,
+                                    //list clouds
+                                    clouds: result.list[this.props.slide].clouds.all,
+                                    //list-wind
+                                    wind: result.list[this.props.slide].wind.speed,
+                                    //dt_txt
+                                    date: result.list[this.props.slide].dt_txt,
+                                    //city
+                                    cityFullName: result.city.name,
+                                    country: result.city.country
+                                })
+                            );
+                        }
+                    })
+                .catch(e => {
+                        this.setState({
+                            isLoaded: true,
+                            error: e
+                        });
                     }
-
-
-                })
-
-            .catch(e => {
-                    this.setState({
-                        isLoaded: true,
-                        error: e
-                    });
-                }
-            )
+                )
+        }
     }
 
     render() {
         const {style} = this.props;
-
         const {
-            error, isLoaded, items,
-            city,
+            error,
             temp,
             pressure,
             humidity,
             //list-weather
             id,
-            weatherName,
             weatherDescription,
-            weatherIcon,
             //list clouds
             clouds,
             //list-wind
@@ -98,14 +92,10 @@ export default class WeatherPanel extends Component {
             cityFullName,
             country,
         } = this.state;
-
-
         return (
             <div className='weather-panel'>
                 {error ? (
                     <p className='error'>Something went wrong...</p>
-
-
                 ) : (
                     <>
                         <div className="weather-panel__date">{date}</div>
@@ -124,7 +114,6 @@ export default class WeatherPanel extends Component {
                                 <div className="weather-info-box weather-info-box__wind">
                                     <WiStrongWind/>
                                     <p className='weather-info-box__value'>{wind} km/h</p>
-
                                 </div>
                                 <div className="weather-info-box weather-info-box__pressure">
                                     <WiThermometer/>
@@ -134,27 +123,17 @@ export default class WeatherPanel extends Component {
                                 <div className="weather-info-box weather-info-box__humidity">
                                     <WiHumidity/>
                                     <p className='weather-info-box__value'>{humidity} %</p>
-
                                 </div>
                                 <div className="weather-info-box weather-info-box__clouds">
                                     <WiCloudy/>
                                     <p className='weather-info-box__value'>{clouds} %</p>
-
                                 </div>
-
                             </div>
                         </div>
-
-
                     </>
-
-
                 )
-
-
                 }
             </div>
-
         );
     }
 }
