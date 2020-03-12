@@ -1,5 +1,8 @@
-
+.weather__panel-container{
+  max-height: 700px;
+}
 .weather-panel {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,10 +13,11 @@
   flex-wrap: wrap;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-  margin: 20px 20px 0;
+  margin: 20px 20px 100px;
   text-align: center;
   position: relative;
   padding: 25px 0 0;
+
 
   @keyframes fadeIn {
     100% {

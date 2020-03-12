@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 export default class WeatherInput extends Component {
     state = {
-
         place: ''
     };
     handleClick = () => {

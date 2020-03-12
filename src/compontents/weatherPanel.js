@@ -33,7 +33,7 @@ export default class WeatherPanel extends Component {
 
     componentDidMount() {
         if (!this.state.isLoaded) {
-            fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${this.state.city},&appid=726dd2967dfc533b5e31a92ffb2fe5aa`)
+            fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${this.state.city},&appid=726dd2967dfc533b5e31a92ffb2fe5aa`)
                 .then(res => res.json())
                 .then(
                     (result) => {
