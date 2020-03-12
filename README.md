@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Weather-app
 
-In the project directory, you can run:
+My one of the first projects in React. Weather application that provides information about the current weather of the city.
 
 ## Installation and Setup
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
